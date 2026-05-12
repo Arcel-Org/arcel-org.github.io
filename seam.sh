@@ -22,7 +22,13 @@ detect_target() {
     esac
 
     case "$OS" in
-        Linux)  echo "${ARCH}-unknown-linux-musl" ;;
+        Linux)
+            if [ "$ARCH" = "aarch64" ]; then
+                echo "${ARCH}-unknown-linux-gnu"
+            else
+                echo "${ARCH}-unknown-linux-musl"
+            fi
+            ;;
         Darwin) echo "${ARCH}-apple-darwin" ;;
         *)
             echo "error: unsupported OS: $OS (try Windows Subsystem for Linux on Windows)" >&2
