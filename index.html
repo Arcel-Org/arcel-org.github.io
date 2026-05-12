@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>North9 Labs</title>
+  <style>
+    :root {
+      --bg:      #0d0d0d;
+      --surface: #141414;
+      --border:  #222;
+      --text:    #e8e8e8;
+      --muted:   #666;
+      --accent:  #3ecf8e;
+      --accent2: #6c8ef7;
+      --warn:    #f7b73a;
+      --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+    }
+    .logo { color: var(--accent); font-weight: 700; font-size: 15px; text-decoration: none; letter-spacing: 0.04em; }
+    .logo span { color: var(--muted); }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .15s; }
+    nav a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero p {
+      color: #999;
+      font-size: 15px;
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ── Install box ── */
+    .install-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+    .install-header {
+      background: #181818;
+      border-bottom: 1px solid var(--border);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f56; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #27c93f; }
+    .install-label { color: var(--muted); font-size: 11px; margin-left: auto; }
+    .install-body { padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+    .prompt { color: var(--accent); user-select: none; }
+    .install-cmd { color: var(--text); flex: 1; word-break: break-all; }
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+      white-space: nowrap;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Projects grid ── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .card {
+      background: var(--surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background .15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover { background: #181818; }
+    .card-head { display: flex; align-items: center; justify-content: space-between; }
+    .card-name { font-size: 14px; font-weight: 600; color: var(--accent); }
+    .card-status {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+    .status-stable { background: rgba(62,207,142,0.12); color: var(--accent); border: 1px solid rgba(62,207,142,0.25); }
+    .status-beta   { background: rgba(247,183,58,0.12);  color: var(--warn);   border: 1px solid rgba(247,183,58,0.25); }
+    .status-wip    { background: rgba(108,142,247,0.12); color: var(--accent2);border: 1px solid rgba(108,142,247,0.25); }
+    .card-desc { color: #888; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; line-height: 1.6; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag { font-size: 10px; letter-spacing: 0.06em; padding: 2px 8px; border: 1px solid var(--border); border-radius: 3px; color: var(--muted); }
+
+    /* ── Seam detail section ── */
+    .detail {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-top: 1.5rem; }
+    @media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
+    .detail-cell { background: var(--surface); padding: 1.25rem 1.5rem; }
+    .detail-cell h3 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .detail-cell ul { list-style: none; }
+    .detail-cell li { color: #aaa; font-size: 13px; padding: 3px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    .detail-cell li::before { content: "→ "; color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    /* ── Highlight spans ── */
+    .hl-green  { color: var(--accent); }
+    .hl-blue   { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">north9<span>labs</span></a>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#seam">Seam</a></li>
+    <li><a href="https://github.com/North9-Labs" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-tag">Open Source · Post-Quantum · Privacy</div>
+  <h1>Build secure systems.<br><em>Ship post-quantum crypto.</em></h1>
+  <p>North9 Labs builds open-source security and networking tools with post-quantum cryptography at the core. Everything is auditable, minimal, and built to last.</p>
+
+  <div class="install-box">
+    <div class="install-header">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="install-label">bash — install seam</span>
+    </div>
+    <div class="install-body">
+      <span class="prompt">$</span>
+      <code class="install-cmd" id="install-cmd">curl -fsSL https://install.north9.org/seam.sh | sh</code>
+      <button class="copy-btn" onclick="copyInstall()">copy</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── Projects ── -->
+<section class="section" id="projects">
+  <div class="section-title">Projects</div>
+  <div class="grid">
+
+    <a class="card" href="https://github.com/North9-Labs/Seam" target="_blank">
+      <div class="card-head">
+        <span class="card-name">Seam</span>
+        <span class="card-status status-stable">stable</span>
+      </div>
+      <p class="card-desc">Post-quantum encrypted UDP transport. Multi-stream, built-in FEC, Noise_XX + ML-KEM-768. Sub-millisecond session resumption.</p>
+      <div class="card-tags">
+        <span class="tag">Rust</span>
+        <span class="tag">ML-KEM-768</span>
+        <span class="tag">Noise_XX</span>
+        <span class="tag">UDP</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://github.com/North9-Labs/Seamless" target="_blank">
+      <div class="card-head">
+        <span class="card-name">Seamless</span>
+        <span class="card-status status-wip">in progress</span>
+      </div>
+      <p class="card-desc">Post-quantum reverse tunnels. Expose any local service through a relay you control, secured end-to-end by Seam.</p>
+      <div class="card-tags">
+        <span class="tag">Rust</span>
+        <span class="tag">Tunneling</span>
+        <span class="tag">Post-Quantum</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://github.com/North9-Labs/Signet" target="_blank">
+      <div class="card-head">
+        <span class="card-name">Signet</span>
+        <span class="card-status status-wip">in progress</span>
+      </div>
+      <p class="card-desc">Cryptographic photo watermarking SDK. Embed unforgeable drand beacon proofs at capture time to certify photos are real.</p>
+      <div class="card-tags">
+        <span class="tag">Rust</span>
+        <span class="tag">drand</span>
+        <span class="tag">Watermark</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://github.com/North9-Labs/Fob" target="_blank">
+      <div class="card-head">
+        <span class="card-name">Fob</span>
+        <span class="card-status status-wip">in progress</span>
+      </div>
+      <p class="card-desc">Encrypted vault on any USB drive. Passwords, TOTP, SSH keys, secure notes. Argon2id + XChaCha20-Poly1305, plausible deniability.</p>
+      <div class="card-tags">
+        <span class="tag">Rust</span>
+        <span class="tag">Argon2id</span>
+        <span class="tag">USB</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── Seam detail ── -->
+<section class="detail" id="seam">
+  <div class="section-title">Seam — Post-Quantum Transport</div>
+
+  <p style="color:#888; font-family: -apple-system,sans-serif; font-size:14px; max-width:580px; line-height:1.7; margin-bottom:1.5rem;">
+    Seam is a secure UDP transport library and CLI designed to replace SSH tunnels for file transfer,
+    port forwarding, and custom protocol work — with ML-KEM-768 post-quantum key exchange baked in from day one.
+  </p>
+
+  <div class="detail-grid">
+    <div class="detail-cell">
+      <h3>Crypto</h3>
+      <ul>
+        <li>ML-KEM-768 + X25519 hybrid KEM</li>
+        <li>Noise_XX authenticated handshake</li>
+        <li>ChaCha20-Poly1305 per-packet AEAD</li>
+        <li>BLAKE3 key derivation</li>
+        <li>0-RTT session resumption</li>
+        <li>Header protection (QUIC-style)</li>
+      </ul>
+    </div>
+    <div class="detail-cell">
+      <h3>Transport</h3>
+      <ul>
+        <li>Multi-stream over single UDP socket</li>
+        <li>Reliable streams + unreliable datagrams</li>
+        <li>CUBIC / BBRv1 congestion control</li>
+        <li>Forward error correction (Reed-Solomon)</li>
+        <li>Keepalive Ping/Pong (non-ACK-eliciting)</li>
+        <li>Path MTU probing</li>
+      </ul>
+    </div>
+    <div class="detail-cell">
+      <h3>CLI commands</h3>
+      <ul>
+        <li>seam cp — push &amp; pull with --resume</li>
+        <li>seam connect — interactive shell tunnel</li>
+        <li>seam send / recv — pipe files</li>
+        <li>seam ls — remote directory listing</li>
+        <li>seam config — manage identity &amp; peers</li>
+        <li>seam doctor — diagnose setup</li>
+      </ul>
+    </div>
+    <div class="detail-cell">
+      <h3>Platforms</h3>
+      <ul>
+        <li>Linux x86_64 (musl, static)</li>
+        <li>Linux aarch64 (musl, static)</li>
+        <li>macOS x86_64 / Apple Silicon</li>
+        <li>Windows x86_64 (MSVC)</li>
+        <li>Library: Rust crate on crates.io</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>
+    &copy; 2026 North9 LLC &nbsp;·&nbsp;
+    <a href="https://github.com/North9-Labs" target="_blank">GitHub</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/North9-Labs/Seam/blob/main/LICENSE" target="_blank">AGPL-3.0</a>
+  </p>
+</footer>
+
+<script>
+  function copyInstall() {
+    const cmd = document.getElementById('install-cmd').textContent;
+    navigator.clipboard.writeText(cmd).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'copied!';
+      btn.style.color = 'var(--accent)';
+      btn.style.borderColor = 'var(--accent)';
+      setTimeout(() => {
+        btn.textContent = 'copy';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
