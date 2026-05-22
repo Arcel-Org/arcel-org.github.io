@@ -611,7 +611,8 @@
       overflow: hidden;
     }
 
-    @media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .projects-grid[style*="repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr !important; } }
 
     .proj-card {
       background: var(--surface);
@@ -1079,10 +1080,182 @@
     </div>
   </div>
 
-  <!-- Open-source projects -->
+  <!-- AI Agent Runtime suite -->
   <div class="sec-header">
     <span class="badge badge-teal">Open Source</span>
-    <span class="sec-title">Tools we've built</span>
+    <span class="sec-title">north9 — AI agent runtime</span>
+  </div>
+
+  <p style="color:var(--muted);font-size:13px;margin-bottom:1.5rem;">11 composable tools for building autonomous AI agents that run safely, remember everything, and cost less to operate.</p>
+
+  <div class="projects-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:3rem;">
+
+    <a class="proj-card" href="https://github.com/North9-Labs/north9" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--teal-bg);">🏗️</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">north9</div>
+      <p class="proj-desc">Core runtime — Docker sandbox + persistent memory. Every command runs in isolation; structured state survives /compact and session restarts.</p>
+      <div class="chip-row">
+        <span class="chip">Docker</span>
+        <span class="chip">MCP</span>
+        <span class="chip">Memory</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Lens" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--accent-bg);">🔭</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Lens</div>
+      <p class="proj-desc">Observability — traces every tool call, token cost, and latency via PostToolUse hook. Query call counts and latency across sessions.</p>
+      <div class="chip-row">
+        <span class="chip">SQLite</span>
+        <span class="chip">Hooks</span>
+        <span class="chip">Tracing</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Index" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--amber-bg);">🗂️</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Index</div>
+      <p class="proj-desc">Semantic memory — keyword search across all past agent runs. FTS5 BM25 ranking, tag filtering, persistent SQLite store.</p>
+      <div class="chip-row">
+        <span class="chip">FTS5</span>
+        <span class="chip">BM25</span>
+        <span class="chip">SQLite</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Forge" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--red-bg);">⚒️</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Forge</div>
+      <p class="proj-desc">Eval framework — YAML test cases run against any model. Catch regressions before they reach production agents.</p>
+      <div class="chip-row">
+        <span class="chip">YAML</span>
+        <span class="chip">Evals</span>
+        <span class="chip">CI</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Vault" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--teal-bg);">🔐</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Vault</div>
+      <p class="proj-desc">Encrypted secrets — Fernet + PBKDF2 credential store. Inject API keys at runtime without exposing them in prompts or logs.</p>
+      <div class="chip-row">
+        <span class="chip">Fernet</span>
+        <span class="chip">PBKDF2</span>
+        <span class="chip">Secrets</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Grid" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--accent-bg);">⚡</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Grid</div>
+      <p class="proj-desc">Parallelism — N tasks at 30s each still takes 30s total. Fan out work across threads with full result aggregation.</p>
+      <div class="chip-row">
+        <span class="chip">Threads</span>
+        <span class="chip">Parallel</span>
+        <span class="chip">Async</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Budget" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--amber-bg);">💰</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Budget</div>
+      <p class="proj-desc">Cost enforcement — hard token and dollar limits. Prevent runaway agent spend before it hits your billing dashboard.</p>
+      <div class="chip-row">
+        <span class="chip">Tokens</span>
+        <span class="chip">Cost limits</span>
+        <span class="chip">Guards</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Gate" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--red-bg);">🚧</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Gate</div>
+      <p class="proj-desc">Policy enforcement — block dangerous tool calls before they execute via PreToolUse hook. Glob + regex rules, configurable YAML policy.</p>
+      <div class="chip-row">
+        <span class="chip">PreToolUse</span>
+        <span class="chip">Policy</span>
+        <span class="chip">YAML</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Scout" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--teal-bg);">🌐</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Scout</div>
+      <p class="proj-desc">Web memory — fetch any URL, extract clean text, search cached content by keyword. Agents browse without burning context on HTML noise.</p>
+      <div class="chip-row">
+        <span class="chip">HTTP</span>
+        <span class="chip">FTS5</span>
+        <span class="chip">Cache</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Sift" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--accent-bg);">📊</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Sift</div>
+      <p class="proj-desc">Data queries — load CSV/JSON into SQLite, query with SQL. No need to read entire files into context; get exactly the rows you need.</p>
+      <div class="chip-row">
+        <span class="chip">SQLite</span>
+        <span class="chip">CSV</span>
+        <span class="chip">SQL</span>
+      </div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/North9-Labs/Chain" target="_blank">
+      <div class="proj-card-top">
+        <div class="proj-icon" style="background:var(--amber-bg);">🔗</div>
+        <span class="status-pill pill-active">Stable</span>
+      </div>
+      <div class="proj-name">Chain</div>
+      <p class="proj-desc">Workflows — YAML pipelines connecting all north9 tools. Steps reference each other with <code style="font-size:11px;background:var(--surface3);padding:1px 5px;border-radius:4px;">{{ step.output }}</code> template syntax.</p>
+      <div class="chip-row">
+        <span class="chip">YAML</span>
+        <span class="chip">Pipelines</span>
+        <span class="chip">Orchestration</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:3rem;font-size:13px;">
+    <span style="color:var(--muted);">Install the full suite:</span>
+    <code style="color:var(--teal-lt);margin-left:0.75rem;">pip install "git+https://github.com/North9-Labs/north9.git#egg=north9[mcp]" &amp;&amp; python3 -m north9 --suite</code>
+    <span style="color:var(--dim);margin-left:0.75rem;">— requires Docker</span>
+  </div>
+
+  <!-- Other open-source projects -->
+  <div class="sec-header">
+    <span class="badge badge-purple">Open Source</span>
+    <span class="sec-title">Other tools</span>
   </div>
 
   <div class="projects-grid">
