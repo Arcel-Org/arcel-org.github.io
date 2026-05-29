@@ -14,16 +14,12 @@ need() {
     fi
 }
 
-check_rust() {
+main() {
+    need git
     if ! command -v cargo >/dev/null 2>&1; then
         echo "error: Rust not found — install from https://rustup.rs" >&2
         exit 1
     fi
-}
-
-main() {
-    need git
-    check_rust
 
     TMPDIR=$(mktemp -d)
     trap 'rm -rf "$TMPDIR"' EXIT
@@ -33,10 +29,10 @@ main() {
 
     printf 'building (this may take a few minutes)...\n'
     cd "${TMPDIR}/Fob"
-    cargo build --release -p sigil-cli 2>&1 | tail -5
+    cargo build --release -p fob-cli 2>&1 | tail -5
 
     mkdir -p "$INSTALL_DIR"
-    cp "${TMPDIR}/Fob/target/release/sigil" "${INSTALL_DIR}/fob"
+    cp "${TMPDIR}/Fob/target/release/fob" "${INSTALL_DIR}/fob"
 
     printf '\n\033[32m✓\033[0m  installed fob → %s/fob\n' "$INSTALL_DIR"
 
