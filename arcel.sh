@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# north9 installer — https://install.arcel.org/north9.sh
-# Usage:  curl -fsSL https://install.arcel.org/north9.sh | sh
+# arcel installer — https://install.arcel.org/arcel.sh
+# Usage:  curl -fsSL https://install.arcel.org/arcel.sh | sh
 set -eu
 
-REPO="Arcel-Org/north9"
+REPO="Arcel-Org/arcel"
 
 # ── Require a command ─────────────────────────────────────────────────────────
 need() {
@@ -42,19 +42,19 @@ main() {
 
     if [ -z "$LATEST" ]; then
         # fall back to installing from main
-        INSTALL_URL="git+https://github.com/${REPO}.git#egg=north9[mcp]"
+        INSTALL_URL="git+https://github.com/${REPO}.git#egg=arcel[mcp]"
         printf 'no release found — installing from main branch\n'
     else
-        INSTALL_URL="git+https://github.com/${REPO}.git@${LATEST}#egg=north9[mcp]"
-        printf 'installing north9 %s…\n' "$LATEST"
+        INSTALL_URL="git+https://github.com/${REPO}.git@${LATEST}#egg=arcel[mcp]"
+        printf 'installing arcel %s…\n' "$LATEST"
     fi
 
     "$PYTHON" -m pip install --quiet "$INSTALL_URL"
 
-    printf 'running north9 install (hooks + MCP server)…\n'
-    "$PYTHON" -m north9 --install
+    printf 'running arcel install (hooks + MCP server)…\n'
+    "$PYTHON" -m arcel --install
 
-    printf '\n\033[32m✓\033[0m  north9 installed — restart Claude Code\n'
+    printf '\n\033[32m✓\033[0m  arcel installed — restart Claude Code\n'
     printf '\n    Sandbox: every command runs in Docker — your machine is always safe\n'
     printf '    Memory:  structured state survives /compact and session restarts\n\n'
 }

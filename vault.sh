@@ -47,7 +47,7 @@ main() {
     "$PYTHON" -m vault --install
 
     printf '\n\033[32m✓\033[0m  vault installed — restart Claude Code\n'
-    printf '\n    Secrets: encrypted credential store for agents (set NORTH9_VAULT_KEY first)\n\n'
+    printf '\n    Secrets: encrypted credential store for agents (set ARCEL_VAULT_KEY first)\n\n'
 }
 
 main "$@"
