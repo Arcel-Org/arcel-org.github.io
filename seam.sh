@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
-# Seam installer — https://install.north9.org/seam.sh
-# Usage:  curl -fsSL https://install.north9.org/seam.sh | sh
+# Seam installer — https://install.arcel.org/seam.sh
+# Usage:  curl -fsSL https://install.arcel.org/seam.sh | sh
 #         SEAM_INSTALL_DIR=/usr/local/bin sh seam.sh
 set -eu
 
-REPO="North9-Labs/Seam"
+REPO="Arcel-Org/Seam"
 INSTALL_DIR="${SEAM_INSTALL_DIR:-$HOME/.local/bin}"
 
 # ── Detect target triple ──────────────────────────────────────────────────────

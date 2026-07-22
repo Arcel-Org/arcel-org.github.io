@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Scout installer — https://install.north9.org/scout.sh
-# Usage:  curl -fsSL https://install.north9.org/scout.sh | sh
+# Scout installer — https://install.arcel.org/scout.sh
+# Usage:  curl -fsSL https://install.arcel.org/scout.sh | sh
 set -eu
 
-REPO="North9-Labs/Scout"
+REPO="Arcel-Org/Scout"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

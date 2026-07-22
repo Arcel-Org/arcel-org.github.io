@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Budget installer — https://install.north9.org/budget.sh
-# Usage:  curl -fsSL https://install.north9.org/budget.sh | sh
+# Budget installer — https://install.arcel.org/budget.sh
+# Usage:  curl -fsSL https://install.arcel.org/budget.sh | sh
 set -eu
 
-REPO="North9-Labs/Budget"
+REPO="Arcel-Org/Budget"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

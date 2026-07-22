@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Lens installer — https://install.north9.org/lens.sh
-# Usage:  curl -fsSL https://install.north9.org/lens.sh | sh
+# Lens installer — https://install.arcel.org/lens.sh
+# Usage:  curl -fsSL https://install.arcel.org/lens.sh | sh
 set -eu
 
-REPO="North9-Labs/Lens"
+REPO="Arcel-Org/Lens"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Chain installer — https://install.north9.org/chain.sh
-# Usage:  curl -fsSL https://install.north9.org/chain.sh | sh
+# Chain installer — https://install.arcel.org/chain.sh
+# Usage:  curl -fsSL https://install.arcel.org/chain.sh | sh
 set -eu
 
-REPO="North9-Labs/Chain"
+REPO="Arcel-Org/Chain"
 
 need() { command -v "$1" >/dev/null 2>&1 || { echo "error: '$1' required" >&2; exit 1; }; }
 

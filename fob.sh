@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
-# Fob installer — https://install.north9.org/fob.sh
-# Usage:  curl -fsSL https://install.north9.org/fob.sh | sh
+# Fob installer — https://install.arcel.org/fob.sh
+# Usage:  curl -fsSL https://install.arcel.org/fob.sh | sh
 # Builds from source — requires Rust 1.75+.
 set -eu
 
-FOB_REPO="https://github.com/North9-Labs/Fob"
+FOB_REPO="https://github.com/Arcel-Org/Fob"
 INSTALL_DIR="${FOB_INSTALL_DIR:-$HOME/.local/bin}"
 
 need() {

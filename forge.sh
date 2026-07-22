@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Forge installer — https://install.north9.org/forge.sh
-# Usage:  curl -fsSL https://install.north9.org/forge.sh | sh
+# Forge installer — https://install.arcel.org/forge.sh
+# Usage:  curl -fsSL https://install.arcel.org/forge.sh | sh
 set -eu
 
-REPO="North9-Labs/Forge"
+REPO="Arcel-Org/Forge"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Gate installer — https://install.north9.org/gate.sh
-# Usage:  curl -fsSL https://install.north9.org/gate.sh | sh
+# Gate installer — https://install.arcel.org/gate.sh
+# Usage:  curl -fsSL https://install.arcel.org/gate.sh | sh
 set -eu
 
-REPO="North9-Labs/Gate"
+REPO="Arcel-Org/Gate"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

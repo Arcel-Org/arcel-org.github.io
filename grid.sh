@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Grid installer — https://install.north9.org/grid.sh
-# Usage:  curl -fsSL https://install.north9.org/grid.sh | sh
+# Grid installer — https://install.arcel.org/grid.sh
+# Usage:  curl -fsSL https://install.arcel.org/grid.sh | sh
 set -eu
 
-REPO="North9-Labs/Grid"
+REPO="Arcel-Org/Grid"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

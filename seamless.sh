@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
-# Seamless installer — https://install.north9.org/seamless.sh
-# Usage:  curl -fsSL https://install.north9.org/seamless.sh | sh
+# Seamless installer — https://install.arcel.org/seamless.sh
+# Usage:  curl -fsSL https://install.arcel.org/seamless.sh | sh
 # Builds from source — requires Rust 1.88+ and Seam cloned as a sibling directory.
 set -eu
 
-SEAM_REPO="https://github.com/North9-Labs/Seam"
-SEAMLESS_REPO="https://github.com/North9-Labs/Seamless"
+SEAM_REPO="https://github.com/Arcel-Org/Seam"
+SEAMLESS_REPO="https://github.com/Arcel-Org/Seamless"
 INSTALL_DIR="${SEAMLESS_INSTALL_DIR:-$HOME/.local/bin}"
 
 need() {

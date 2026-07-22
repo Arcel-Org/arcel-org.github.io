@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Sift installer — https://install.north9.org/sift.sh
-# Usage:  curl -fsSL https://install.north9.org/sift.sh | sh
+# Sift installer — https://install.arcel.org/sift.sh
+# Usage:  curl -fsSL https://install.arcel.org/sift.sh | sh
 set -eu
 
-REPO="North9-Labs/Sift"
+REPO="Arcel-Org/Sift"
 
 need() { command -v "$1" >/dev/null 2>&1 || { echo "error: '$1' required" >&2; exit 1; }; }
 

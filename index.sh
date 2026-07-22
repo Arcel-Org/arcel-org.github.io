@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Index installer — https://install.north9.org/index.sh
-# Usage:  curl -fsSL https://install.north9.org/index.sh | sh
+# Index installer — https://install.arcel.org/index.sh
+# Usage:  curl -fsSL https://install.arcel.org/index.sh | sh
 set -eu
 
-REPO="North9-Labs/Index"
+REPO="Arcel-Org/Index"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

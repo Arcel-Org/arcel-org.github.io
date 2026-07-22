@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Vault installer — https://install.north9.org/vault.sh
-# Usage:  curl -fsSL https://install.north9.org/vault.sh | sh
+# Vault installer — https://install.arcel.org/vault.sh
+# Usage:  curl -fsSL https://install.arcel.org/vault.sh | sh
 set -eu
 
-REPO="North9-Labs/Vault"
+REPO="Arcel-Org/Vault"
 
 need() {
     if ! command -v "$1" >/dev/null 2>&1; then

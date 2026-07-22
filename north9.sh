@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# north9 installer — https://install.north9.org/north9.sh
-# Usage:  curl -fsSL https://install.north9.org/north9.sh | sh
+# north9 installer — https://install.arcel.org/north9.sh
+# Usage:  curl -fsSL https://install.arcel.org/north9.sh | sh
 set -eu
 
-REPO="North9-Labs/north9"
+REPO="Arcel-Org/north9"
 
 # ── Require a command ─────────────────────────────────────────────────────────
 need() {
